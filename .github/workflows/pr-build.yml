@@ -2,7 +2,7 @@ name: pr-build
 on: [pull_request]
 jobs:
   handle-pr:
-    runs-on: ubuntu-latest
+    runs-on: fleet-infra
     steps:
       - name: checkout 
         uses: actions/checkout@v6
