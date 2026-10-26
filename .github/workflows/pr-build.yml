@@ -2,7 +2,7 @@ name: pr-build
 on: [pull_request]
 jobs:
   handle-pr:
-    runs-on: fleet-infra
+    runs-on: fleet-infra-runner
     steps:
       - name: checkout 
         uses: actions/checkout@v6
@@ -11,6 +11,9 @@ jobs:
           ref: "refs/pull/${{ github.event.number }}/merge"
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4.0.0 
+        with: 
+          driver: kubernetes 
+          driver-opts: namespace=github-runner
       - name: Docker BUILD
         uses: docker/build-push-action@v7.1.0
         with: 
