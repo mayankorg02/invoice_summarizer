@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs: 
   reminder:
-    runs-on: fleet-infra
+    runs-on: ubuntu-latest 
     steps:
       - name: checkout
         uses: actions/checkout@v6
